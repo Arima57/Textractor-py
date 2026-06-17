@@ -1,14 +1,14 @@
-# process.py
 import subprocess
 import threading
 import queue
 import time
+from pathlib import Path
 
 class process:
     def __init__(self, path: str):
         self.path = path
         self.initialized = False
-        self._queues = {}       
+        self._queue = queue.Queue()
         self._thread = None
 
     def initialize(self):
@@ -20,7 +20,7 @@ class process:
             encoding="utf-8",
             errors="replace",
             bufsize=1,
-            cwd=str(__import__("pathlib").Path(self.path).parent)
+            cwd=str(Path(self.path).parent)
         )
         self.initialized = True
         self._thread = threading.Thread(target=self._reader, daemon=True)
@@ -28,51 +28,36 @@ class process:
         time.sleep(0.1)
 
     def _reader(self):
-        buffer = []
         for line in self.subsystem.stdout:
-            stripped = line.strip()
-            if stripped == "":
-                if buffer:
-                    chunk = "\n".join(buffer)
-                    pid = self._parse_pid(chunk)
-                    if pid and pid in self._queues:
-                        self._queues[pid].put(chunk)
-                    buffer = []
-            else:
-                buffer.append(stripped)
+            parsed = self._parse_line(line.strip())
+            if parsed:
+                self._queue.put(parsed)
 
-    def _parse_pid(self, chunk: str) -> int | None:
-        # chunk first line format: handle|pid|addr|ctx|ctx2|name|code:text
+    def _parse_line(self, line: str) -> tuple | None:
+        # Format: [handle:pid:addr:ctx:ctx2:name:hookcode:dll:function] text
         try:
-            first_line = chunk.split("\n")[0]
-            parts = first_line.split("|")
-            return int(parts[1], 16)  # pid is second field, hex
+            meta, _, text = line.partition("] ")
+            fields = meta.lstrip("[").split(":")
+            pid = int(fields[1], 16)
+            hook = fields[6]
+            return (pid, hook, text)
         except (IndexError, ValueError):
             return None
 
-    def register_pid(self, pid: int):
-        if pid not in self._queues:
-            self._queues[pid] = queue.Queue()
-
-    def unregister_pid(self, pid: int):
-        self._queues.pop(pid, None)
+    def read(self):
+        return self._queue.get()  # blocks until something arrives
 
     def attach(self, pid: int):
-        self.register_pid(pid)
         self.subsystem.stdin.write(f"attach -P{pid}\n")
         self.subsystem.stdin.flush()
 
     def detach(self, pid: int):
         self.subsystem.stdin.write(f"detach -P{pid}\n")
         self.subsystem.stdin.flush()
-        self.unregister_pid(pid)
 
     def hook(self, pid: int, hcode: str):
-        self.subsystem.stdin.write(f"{hcode}")
+        self.subsystem.stdin.write(f"{hcode} -P{pid}\n")
         self.subsystem.stdin.flush()
-
-    def get_queue(self, pid: int) -> queue.Queue:
-        return self._queues[pid]
 
     def terminate(self):
         self.subsystem.stdin.close()

@@ -1,0 +1,94 @@
+LICENSE
+README.md
+pyproject.toml
+tests/test_arch.py
+tests/test_process.py
+tests/test_textractor.py
+textractor_py/__init__.py
+textractor_py/arch.py
+textractor_py/exceptions.py
+textractor_py/models.py
+textractor_py/process.py
+textractor_py/textractor.py
+textractor_py.egg-info/PKG-INFO
+textractor_py.egg-info/SOURCES.txt
+textractor_py.egg-info/dependency_links.txt
+textractor_py.egg-info/requires.txt
+textractor_py.egg-info/top_level.txt
+textractor_py/bin/x64/Bing Translate.xdll
+textractor_py/bin/x64/Copy to Clipboard.xdll
+textractor_py/bin/x64/DeepL Translate.xdll
+textractor_py/bin/x64/DevTools DeepL Translate.xdll
+textractor_py/bin/x64/DevTools Papago Translate.xdll
+textractor_py/bin/x64/DevTools Systran Translate.xdll
+textractor_py/bin/x64/Extra Newlines.xdll
+textractor_py/bin/x64/Extra Window.xdll
+textractor_py/bin/x64/Google Translate.xdll
+textractor_py/bin/x64/LoaderDll.dll
+textractor_py/bin/x64/LocaleEmulator.dll
+textractor_py/bin/x64/Lua.xdll
+textractor_py/bin/x64/Qt5Core.dll
+textractor_py/bin/x64/Qt5Gui.dll
+textractor_py/bin/x64/Qt5Network.dll
+textractor_py/bin/x64/Qt5WebSockets.dll
+textractor_py/bin/x64/Qt5Widgets.dll
+textractor_py/bin/x64/Qt5WinExtras.dll
+textractor_py/bin/x64/Regex Filter.xdll
+textractor_py/bin/x64/Regex Replacer.xdll
+textractor_py/bin/x64/Remove 30 Repeated Sentences.xdll
+textractor_py/bin/x64/Remove Repeated Characters.xdll
+textractor_py/bin/x64/Remove Repeated Phrases 2.xdll
+textractor_py/bin/x64/Remove Repeated Phrases.xdll
+textractor_py/bin/x64/Replacer.xdll
+textractor_py/bin/x64/Styler.xdll
+textractor_py/bin/x64/Textractor.exe
+textractor_py/bin/x64/TextractorCLI.exe
+textractor_py/bin/x64/Thread Linker.xdll
+textractor_py/bin/x64/concrt140.dll
+textractor_py/bin/x64/msvcp140.dll
+textractor_py/bin/x64/msvcp140_1.dll
+textractor_py/bin/x64/msvcp140_2.dll
+textractor_py/bin/x64/msvcp140_atomic_wait.dll
+textractor_py/bin/x64/msvcp140_codecvt_ids.dll
+textractor_py/bin/x64/texthook.dll
+textractor_py/bin/x64/vccorlib140.dll
+textractor_py/bin/x64/vcruntime140.dll
+textractor_py/bin/x64/vcruntime140_1.dll
+textractor_py/bin/x86/Bing Translate.xdll
+textractor_py/bin/x86/Copy to Clipboard.xdll
+textractor_py/bin/x86/DeepL Translate.xdll
+textractor_py/bin/x86/DevTools DeepL Translate.xdll
+textractor_py/bin/x86/DevTools Papago Translate.xdll
+textractor_py/bin/x86/DevTools Systran Translate.xdll
+textractor_py/bin/x86/Extra Newlines.xdll
+textractor_py/bin/x86/Extra Window.xdll
+textractor_py/bin/x86/Google Translate.xdll
+textractor_py/bin/x86/LoaderDll.dll
+textractor_py/bin/x86/LocaleEmulator.dll
+textractor_py/bin/x86/Lua.xdll
+textractor_py/bin/x86/Qt5Core.dll
+textractor_py/bin/x86/Qt5Gui.dll
+textractor_py/bin/x86/Qt5Network.dll
+textractor_py/bin/x86/Qt5WebSockets.dll
+textractor_py/bin/x86/Qt5Widgets.dll
+textractor_py/bin/x86/Qt5WinExtras.dll
+textractor_py/bin/x86/Regex Filter.xdll
+textractor_py/bin/x86/Regex Replacer.xdll
+textractor_py/bin/x86/Remove 30 Repeated Sentences.xdll
+textractor_py/bin/x86/Remove Repeated Characters.xdll
+textractor_py/bin/x86/Remove Repeated Phrases 2.xdll
+textractor_py/bin/x86/Remove Repeated Phrases.xdll
+textractor_py/bin/x86/Replacer.xdll
+textractor_py/bin/x86/Styler.xdll
+textractor_py/bin/x86/Textractor.exe
+textractor_py/bin/x86/TextractorCLI.exe
+textractor_py/bin/x86/Thread Linker.xdll
+textractor_py/bin/x86/concrt140.dll
+textractor_py/bin/x86/msvcp140.dll
+textractor_py/bin/x86/msvcp140_1.dll
+textractor_py/bin/x86/msvcp140_2.dll
+textractor_py/bin/x86/msvcp140_atomic_wait.dll
+textractor_py/bin/x86/msvcp140_codecvt_ids.dll
+textractor_py/bin/x86/texthook.dll
+textractor_py/bin/x86/vccorlib140.dll
+textractor_py/bin/x86/vcruntime140.dll
