@@ -6,12 +6,16 @@ build-backend = "setuptools.build_meta"
 name = "textractor-py"
 version = "0.1.0"
 description = "Python wrapper for TextractorCLI"
-license = { text = "GPL-2.0" }
+license = { text = "GPL-2.0-only" }
 requires-python = ">=3.10"
 dependencies = ["psutil"]
-
+classifiers = ["Operating System :: Microsoft :: Windows",]
 [tool.setuptools.packages.find]
 where = ["."]
 
 [tool.setuptools.package-data]
 textractor_py = ["bin/x86/*", "bin/x64/*"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["textractor_py*"]

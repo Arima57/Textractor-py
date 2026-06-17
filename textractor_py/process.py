@@ -17,7 +17,7 @@ class process:
             stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
-            encoding="utf-8",
+            encoding="utf-16-le",
             errors="replace",
             bufsize=1,
             cwd=str(Path(self.path).parent)
@@ -29,7 +29,7 @@ class process:
 
     def _reader(self):
         for line in self.subsystem.stdout:
-            parsed = self._parse_line(line.strip())
+            parsed = self._parse_line(line.strip('\x00').strip())
             if parsed:
                 self._queue.put(parsed)
 
@@ -55,9 +55,6 @@ class process:
         self.subsystem.stdin.write(f"detach -P{pid}\n")
         self.subsystem.stdin.flush()
 
-    def hook(self, pid: int, hcode: str):
-        self.subsystem.stdin.write(f"{hcode} -P{pid}\n")
-        self.subsystem.stdin.flush()
 
     def terminate(self):
         self.subsystem.stdin.close()
