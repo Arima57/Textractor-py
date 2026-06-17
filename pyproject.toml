@@ -7,15 +7,40 @@ name = "textractor-py"
 version = "0.1.0"
 description = "Python wrapper for TextractorCLI"
 license = { text = "GPL-2.0-only" }
+authors = [
+    { name = "Killswitch", email = "killswitch.asterisk@proton.me"}
+]
+readme = "README.md"
+keywords = [
+    "textractor",
+    "visual-novel",
+    "japanese",
+    "text-hooking",
+    "translation"
+]
 requires-python = ">=3.10"
 dependencies = ["psutil"]
-classifiers = ["Operating System :: Microsoft :: Windows",]
-[tool.setuptools.packages.find]
-where = ["."]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: MIT License",
 
-[tool.setuptools.package-data]
-textractor_py = ["bin/x86/*", "bin/x64/*"]
+    "Operating System :: Microsoft :: Windows",
+
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
 
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["textractor_py*"]
+
+[tool.setuptools.package-data]
+textractor_py = ["bin/x86/*", "bin/x64/*"]
+
+[project.urls]
+Repository = "https://github.com/arima57/textractor-py"
+
