@@ -1,2 +1,2 @@
-from .textractor import textractor
-from .arch import arch
+from .textractor import Textractor
+from .arch import Arch

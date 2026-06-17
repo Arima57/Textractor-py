@@ -4,7 +4,7 @@ import queue
 import time
 from pathlib import Path
 
-class process:
+class Process:
     def __init__(self, path: str):
         self.path = path
         self.initialized = False

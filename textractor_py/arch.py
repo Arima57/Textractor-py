@@ -1,7 +1,7 @@
 import ctypes
 from enum import Enum
 
-class arch(Enum):
+class Arch(Enum):
     x86 = 0
     x64 = 1
     auto = 2
@@ -16,4 +16,4 @@ def detect_arch(pid):
     finally:
         ctypes.windll.kernel32.CloseHandle(h)
     
-    return arch.x86 if is_wow64.value == True else arch.x64
+    return Arch.x86 if is_wow64.value == True else Arch.x64

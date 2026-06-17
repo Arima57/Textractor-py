@@ -1,40 +1,40 @@
-from .arch import arch, detect_arch
+from .arch import Arch, detect_arch
 from pathlib import Path
-from .process import process
+from .process import Process
 
 BIN_DIR = Path(__file__).parent / "bin"
 
-class textractor:
+class Textractor:
     def __init__(self):
         self.clis = {
-            arch.x86: process(str(BIN_DIR / "x86" / "TextractorCLI.exe")),
-            arch.x64: process(str(BIN_DIR / "x64" / "TextractorCLI.exe"))
+            Arch.x86: Process(str(BIN_DIR / "x86" / "TextractorCLI.exe")),
+            Arch.x64: Process(str(BIN_DIR / "x64" / "TextractorCLI.exe"))
         }
-        self._pid_arch = {}     # pid -> arch
+        self._pid_Arch = {}     # pid -> Arch
 
-    def attach(self, pid: int, p_arch=arch.auto):
-        if pid in self._pid_arch:
+    def attach(self, pid: int, p_arch=Arch.auto):
+        if pid in self._pid_Arch:
             return
 
-        if p_arch == arch.auto:
+        if p_arch == Arch.auto:
             p_arch = detect_arch(pid)
 
         if not self.clis[p_arch].initialized:
             self.clis[p_arch].initialize()
 
         self.clis[p_arch].attach(pid)
-        self._pid_arch[pid] = p_arch
+        self._pid_Arch[pid] = p_arch
 
     def detach(self, pid: int):
-        p_arch = self._pid_arch.pop(pid, None)
+        p_arch = self._pid_Arch.pop(pid, None)
         if p_arch:
             self.clis[p_arch].detach(pid=pid)
 
     def listen(self, hook:None, pid:int=0):
-        if pid!=0 and pid not in self._pid_arch:
+        if pid!=0 and pid not in self._pid_Arch:
             raise RuntimeError(f"PID {pid} is not attached. Call attach() first.")
 
-        p_arch = self._pid_arch[pid]
+        p_arch = self._pid_Arch[pid]
         cli = self.clis[p_arch]
 
         while True:

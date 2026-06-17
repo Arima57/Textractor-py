@@ -1,8 +1,8 @@
-from textractor_py import textractor
+from textractor_py import Textractor
 
-test = textractor()
-test.attach(2764)
+test = Textractor()
+test.attach(6328)
 print("attached, listening...")
 
-for line in test.listen(hook="HW-4*14", pid=2764):
+for line in test.listen(hook="HW-4*14", pid=6328):
     print(line)
