@@ -79,8 +79,8 @@ Example:
 
 ```python
 for line in tex.listen(
-    hook="HW-4*14",
-    pid=2764
+    hook="HW-4*14", #optional
+    pid=2764 #You do have the option to set it to 0 in order to listen to everything
 ):
     print(line)
 ```
