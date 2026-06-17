@@ -30,7 +30,7 @@ class Textractor:
         if p_arch:
             self.clis[p_arch].detach(pid=pid)
 
-    def listen(self, hook:None, pid:int=0):
+    def listen(self, hook=None, pid:int=0):
         if pid!=0 and pid not in self._pid_Arch:
             raise RuntimeError(f"PID {pid} is not attached. Call attach() first.")
 
