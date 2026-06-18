@@ -4,9 +4,9 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "textractor-py"
-version = "0.1.0"
+version = "0.1.1"
 description = "Python wrapper for TextractorCLI"
-license = { text = "GPL-2.0-only" }
+license = "GPL-2.0-only"
 authors = [
     { name = "Killswitch", email = "killswitch.asterisk@proton.me"}
 ]
@@ -22,8 +22,6 @@ requires-python = ">=3.10"
 dependencies = ["psutil"]
 classifiers = [
     "Development Status :: 3 - Alpha",
-    "License :: OSI Approved :: MIT License",
-
     "Operating System :: Microsoft :: Windows",
 
     "Programming Language :: Python :: 3",
